@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "synapse-invite-policies"
+description = 'Synapse module which allows restricting invite permissions'
+readme = "README.md"
+requires-python = ">=3.9"
+license = "AGPL-3.0-only"
+keywords = []
+authors = [
+  { name = "Sorunome", email = "mail@sorunome.de" },
+  { name = "Amanda Graven", email = "amanda@graven.dev" },
+  { name = "Jan Christian Grünhage", email = "jan.christian@gruenhage.xyz" },
+  { name = "Nicolas Werner", email = "n.werner@famedly.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["twisted"]
+version = "0.3.2"
+
+[project.urls]
+Documentation = "https://gitlab.com/famedly/company/backend/services/synapse-invite-policies#synapse-invite-policies"
+Issues = "https://gitlab.com/famedly/company/backend/services/synapse-invite-policies/-/issues"
+Source = "https://gitlab.com/famedly/company/backend/services/synapse-invite-policies/"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "black",
+  "pytest",
+  "pytest-cov",
+  "mock",
+  "matrix-synapse"
+]
+[tool.hatch.envs.default.scripts]
+cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=synapse_invite_policies --cov=tests"
+format = "black ."
+
+[tool.hatch.envs.ci.scripts]
+format = "black --check ."
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = []
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
