@@ -31,7 +31,7 @@ class InvitePolicies:
     def __init__(self, config: InvitePoliciesConfig, api: ModuleApi):
         self.api = api
 
-        self.config = self.parse_config(config)
+        self.config = config
         if self.config.block_all_outgoing_invites:
             self.api.register_spam_checker_callbacks(
                 user_may_invite=self.user_may_invite
