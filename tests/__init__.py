@@ -23,7 +23,7 @@ from synapse.module_api import ModuleApi
 admins = {}
 
 
-def get_invite_policies(config):
+def get_invite_policies(config: dict):
     def is_mine(user_id: str):
         return user_id.endswith(":example.org")
 
@@ -34,4 +34,4 @@ def get_invite_policies(config):
     api.server_name = "example.org"
     api.is_mine.side_effect = is_mine
 
-    return InvitePolicies(config, api)
+    return InvitePolicies(InvitePolicies.parse_config(config), api)
