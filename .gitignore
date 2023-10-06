@@ -5,3 +5,5 @@ _trial_temp
 venv
 dist
 .coverage
+base.lcov
+head.lcov

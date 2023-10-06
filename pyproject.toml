@@ -28,9 +28,9 @@ dependencies = ["twisted"]
 version = "0.3.2"
 
 [project.urls]
-Documentation = "https://gitlab.com/famedly/company/backend/services/synapse-invite-policies#synapse-invite-policies"
-Issues = "https://gitlab.com/famedly/company/backend/services/synapse-invite-policies/-/issues"
-Source = "https://gitlab.com/famedly/company/backend/services/synapse-invite-policies/"
+Documentation = "https://github.com/famedly/synapse-invite-policies#synapse-invite-policies"
+Issues = "https://github.com/famedly/synapse-invite-policies/-/issues"
+Source = "https://github.com/famedly/synapse-invite-policies/"
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -43,6 +43,9 @@ dependencies = [
 [tool.hatch.envs.default.scripts]
 cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=synapse_invite_policies --cov=tests"
 format = "black ."
+# For CI use
+head-cov = "pytest --cov-report=lcov:../head.lcov --cov-config=pyproject.toml --cov=synapse_invite_policies --cov=tests"
+base-cov = "pytest --cov-report=lcov:../base.lcov --cov-config=pyproject.toml --cov=synapse_invite_policies --cov=tests"
 
 [tool.hatch.envs.ci.scripts]
 format = "black --check ."
